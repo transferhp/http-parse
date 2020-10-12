@@ -67,14 +67,14 @@ class HttpParser(object):
         return self.get_parsed_data["remote_host"].nunique()
 
     def get_top3_visited_url(self) -> List[str]:
-        return self.select_topn_categories_by_freq(df=self.get_parsed_data,
-                                                   groupby_col="remote_host",
-                                                   topn=3)
+        return self.select_topn_categories_by_freq(
+            df=self.get_parsed_data, groupby_col="remote_host", topn=3
+        )
 
     def get_top3_active_ip_address(self) -> List[str]:
         success_request = self.get_parsed_data[
             self.get_parsed_data["response_code"] == "200"
         ]
-        return self.select_topn_categories_by_freq(df=success_request,
-                                                   groupby_col="remote_host",
-                                                   topn=3)
+        return self.select_topn_categories_by_freq(
+            df=success_request, groupby_col="remote_host", topn=3
+        )
